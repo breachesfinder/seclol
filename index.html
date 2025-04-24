@@ -139,63 +139,6 @@
       height: 24px;
     }
 
-    /* Volume Control Styles */
-    .volume-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .volume-icon {
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .volume-icon:hover {
-      transform: scale(1.1);
-    }
-
-    .volume-slider {
-      width: 150px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 5px;
-      height: 5px;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .volume-slider input[type="range"] {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 100%;
-      height: 5px;
-      background: #ddd;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .volume-slider input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 20px;
-      height: 20px;
-      background: #fff;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-
-    .volume-slider input[type="range"]:focus {
-      outline: none;
-    }
-
-    .volume-slider input[type="range"]:focus::-webkit-slider-thumb {
-      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
-    }
-
-    /* Snowflakes */
     .snowflake {
       position: fixed;
       top: -10px;
@@ -237,19 +180,11 @@
           <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" class="icon" alt="Telegram"> @unloggable
         </a>
         <a href="https://discord.gg/Swf6DK9d" target="_blank" class="social-link">
-          <img src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/discord.svg" class="icon" alt="Discord">@tlosec
+          <img src="https://www.pinterest.com/pin/discord-icon-transparent-white--672654894367961540/" class="icon" alt="Discord">@tlosec
         </a>
         <a href="mailto:sec@govshield.cc" class="social-link">
           <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" class="icon" alt="Email"> sec@govshield.cc
         </a>
-      </div>
-
-      <!-- Volume Control Section -->
-      <div class="volume-container">
-        <img src="https://img.icons8.com/ios/452/volume.png" alt="volume-icon" class="volume-icon" id="volume-icon" />
-        <div class="volume-slider">
-          <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
-        </div>
       </div>
     </div>
     <audio id="profile-audio" autoplay loop>
@@ -258,31 +193,6 @@
   </div>
 
   <script>
-    // Volume control functionality
-    const volumeIcon = document.getElementById('volume-icon');
-    const volumeSlider = document.getElementById('volume-slider');
-    const profileAudio = document.getElementById('profile-audio');
-
-    // Set initial volume
-    profileAudio.volume = volumeSlider.value;
-
-    // Adjust volume based on slider
-    volumeSlider.addEventListener('input', () => {
-      profileAudio.volume = volumeSlider.value;
-    });
-
-    // Change volume icon when slider value changes
-    volumeSlider.addEventListener('input', () => {
-      const volume = volumeSlider.value;
-
-      if (volume == 0) {
-        volumeIcon.src = 'https://img.icons8.com/ios/452/mute.png';
-      } else {
-        volumeIcon.src = 'https://img.icons8.com/ios/452/volume.png';
-      }
-    });
-
-    // Terminal animation
     const lines = [
       "root@adduser.shw",
       "Please state the user you would like to add --> sec",
@@ -319,11 +229,11 @@
           profile.style.display = "flex";
           videoBg.style.display = "block";
           profileAudio.play().catch(e => console.log("Autoplay blocked"));
+          startSnowLoop(); // Start snow only here
         }, 1000);
       }
     }
 
-    // Handle key press and mouse click to transition from intro
     function startOnInput() {
       document.getElementById("intro").remove();
       terminal.style.display = "block";
@@ -332,10 +242,24 @@
       document.removeEventListener("click", startOnInput);
     }
 
+    function launchSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+      snowflake.style.left = Math.random() * window.innerWidth + 'px';
+      snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+      snowflake.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      snowflake.innerHTML = '❄';
+      document.body.appendChild(snowflake);
+      setTimeout(() => snowflake.remove(), 10000);
+    }
+
+    function startSnowLoop() {
+      setInterval(launchSnowflake, 200); // Only starts after profile appears
+    }
+
     document.addEventListener("keydown", startOnInput);
     document.addEventListener("click", startOnInput);
   </script>
 
 </body>
 </html>
-``
