@@ -1,5 +1,8 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sec's Domain</title>
   <style>
     body {
@@ -278,10 +281,59 @@
         volumeIcon.src = 'https://img.icons8.com/ios/452/volume.png';
       }
     });
-  </script>
 
-  <script>
+    // Terminal animation
     const lines = [
       "root@adduser.shw",
       "Please state the user you would like to add --> sec",
       "Please set the password for 'sec' --> ********",
+      "Shall we create a home directory for 'sec'? --> Yes",
+      "Directory Created, time for your socials!",
+      "",
+      "Logging in...",
+      "Login successful.",
+    ];
+
+    let i = 0, j = 0;
+    const speed = 25;
+    const terminal = document.getElementById("terminal");
+    const profile = document.getElementById("profile");
+    const profileAudio = document.getElementById("profile-audio");
+    const videoBg = document.getElementById("video-bg");
+
+    function typeLine() {
+      if (i < lines.length) {
+        if (j < lines[i].length) {
+          terminal.innerHTML += lines[i].charAt(j);
+          j++;
+          setTimeout(typeLine, speed);
+        } else {
+          terminal.innerHTML += '\n';
+          i++;
+          j = 0;
+          setTimeout(typeLine, 250);
+        }
+      } else {
+        setTimeout(() => {
+          terminal.style.display = "none";
+          profile.style.display = "flex";
+          videoBg.style.display = "block";
+          profileAudio.play().catch(e => console.log("Autoplay blocked"));
+        }, 1000);
+      }
+    }
+
+    function startOnInput() {
+      document.getElementById("intro").remove();
+      terminal.style.display = "block";
+      typeLine();
+      document.removeEventListener("keydown", startOnInput);
+      document.removeEventListener("click", startOnInput);
+    }
+
+    document.addEventListener("keydown", startOnInput);
+    document.addEventListener("click", startOnInput);
+  </script>
+
+</body>
+</html>
