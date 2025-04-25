@@ -138,33 +138,6 @@
       width: 24px;
       height: 24px;
     }
-
-    .ethereum-logo {
-      width: 50px;
-      height: 50px;
-      margin-top: 10px;
-    }
-
-    .ethereum-address {
-      font-size: 14px;
-      color: white;
-      margin-top: 10px;
-      word-wrap: break-word;
-    }
-
-    .snowflake {
-      position: fixed;
-      top: -10px;
-      z-index: 1000;
-      color: white;
-      font-size: 1em;
-      animation: fall linear infinite;
-    }
-
-    @keyframes fall {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(100vh); }
-    }
   </style>
 </head>
 <body>
@@ -181,26 +154,47 @@
 
   <div id="terminal"></div>
 
-  <!-- Profile -->
+  <!-- Profile Section (Sec + Particle) -->
   <div class="profile-container" id="profile">
-    <div class="profile-grid">
-      <img class="pfp" src="https://files.catbox.moe/g98ac1.jpg" alt="pfp" />
-      <h1>Sec™</h1>
-      <p>Greatest Of All Time</p>
-      <hr />
-      <div class="socials">
-        <a href="https://t.me/nondoxable" target="_blank" class="social-link">
-          <img src="https://files.catbox.moe/ym0rei.png" class="icon" alt="Telegram"> @sec
-        </a>
-        <a href="https://discord.gg/Swf6DK9d" target="_blank" class="social-link">
-          <img src="https://files.catbox.moe/kru8yj.png" class="icon" alt="">@tlosec
-        </a>
-        <a href="0x75a4DD174D21c605f861dedF561383d42a574F43" class="social-link">
-          <img src="https://files.catbox.moe/a0ueia.png" class="icon" alt=""> 0x75a4DD174D21c605f861dedF561383d42a574F43
-        </a>
+    <div style="display: flex; gap: 60px; align-items: center; justify-content: center;">
+      
+      <!-- Sec Profile -->
+      <div class="profile-grid" style="transform: translateX(-40px);">
+        <img class="pfp" src="https://files.catbox.moe/g98ac1.jpg" alt="pfp" />
+        <h1>Sec™</h1>
+        <p>Greatest Of All Time</p>
+        <hr />
+        <div class="socials">
+          <a href="https://t.me/nondoxable" target="_blank" class="social-link">
+            <img src="https://files.catbox.moe/ym0rei.png" class="icon" alt="Telegram"> @sec
+          </a>
+          <a href="https://discord.gg/Swf6DK9d" target="_blank" class="social-link">
+            <img src="https://files.catbox.moe/kru8yj.png" class="icon" alt="">@tlosec
+          </a>
+          <a href="0x75a4DD174D21c605f861dedF561383d42a574F43" class="social-link">
+            <img src="https://files.catbox.moe/a0ueia.png" class="icon" alt=""> 0x75a4DD174D21c605f861dedF561383d42a574F43
+          </a>
+        </div>
+      </div>
+
+      <!-- Particle Profile -->
+      <div class="profile-grid" style="transform: translateX(40px);">
+        <img class="pfp" src="https://files.catbox.moe/pqr3ai.jpg" alt="pfp" />
+        <h1>Particle</h1>
+        <p>Master of Shadows</p>
+        <hr />
+        <div class="socials">
+          <a href="https://t.me/detectivings" target="_blank" class="social-link">
+            <img src="https://files.catbox.moe/ym0rei.png" class="icon" alt="Telegram"> @detectivings
+          </a>
+          <a href="#" class="social-link">
+            <img src="https://files.catbox.moe/kru8yj.png" class="icon" alt="">rockstar268
+          </a>
+        </div>
       </div>
 
     </div>
+
     <audio id="profile-audio" autoplay loop>
       <source src="https://files.catbox.moe/jq8p59.mp3" type="audio/mpeg">
     </audio>
@@ -243,7 +237,6 @@
           profile.style.display = "flex";
           videoBg.style.display = "block";
           profileAudio.play().catch(e => console.log("Autoplay blocked"));
-          startSnowLoop(); // Start snow only here
         }, 1000);
       }
     }
@@ -254,21 +247,6 @@
       typeLine();
       document.removeEventListener("keydown", startOnInput);
       document.removeEventListener("click", startOnInput);
-    }
-
-    function launchSnowflake() {
-      const snowflake = document.createElement('div');
-      snowflake.classList.add('snowflake');
-      snowflake.style.left = Math.random() * window.innerWidth + 'px';
-      snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
-      snowflake.style.animationDuration = (Math.random() * 3 + 3) + 's';
-      snowflake.innerHTML = '❄';
-      document.body.appendChild(snowflake);
-      setTimeout(() => snowflake.remove(), 10000);
-    }
-
-    function startSnowLoop() {
-      setInterval(launchSnowflake, 200); // Only starts after profile appears
     }
 
     document.addEventListener("keydown", startOnInput);
