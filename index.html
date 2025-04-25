@@ -170,6 +170,9 @@
         </a>
       </div>
     </div>
+    <audio id="profile-audio" loop>
+      <source src="https://files.catbox.moe/arw217.mp3" type="audio/mpeg">
+    </audio>
   </div>
 
   <script>
@@ -188,6 +191,7 @@
     const speed = 25;
     const terminal = document.getElementById("terminal");
     const profile = document.getElementById("profile");
+    const profileAudio = document.getElementById("profile-audio");
     const videoBg = document.getElementById("video-bg");
 
     function typeLine() {
@@ -207,6 +211,7 @@
           terminal.style.display = "none";
           profile.style.display = "flex";
           videoBg.style.display = "block";
+          profileAudio.play().catch(err => console.log("Autoplay blocked:", err));
         }, 1000);
       }
     }
