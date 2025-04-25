@@ -211,7 +211,7 @@
           terminal.style.display = "none";
           profile.style.display = "flex";
           videoBg.style.display = "block";
-          profileAudio.play().catch(err => console.log("Autoplay blocked:", err));
+          profileAudio.play().catch(err => console.log("Autoplay blocked:", err)); // Ensures the music plays
         }, 1000);
       }
     }
