@@ -1,248 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sec's Domain</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: black;
-      color: white;
-      font-family: 'Arial Black', sans-serif;
-      font-size: 16px;
-      overflow: hidden;
-      text-align: center;
-    }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sec's Domain</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: white;
+      font-family: 'Arial Black', sans-serif;
+      font-size: 16px;
+      overflow: hidden;
+      text-align: center;
+    }
 
-    #intro {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 22px;
-      color: white;
-    }
+    #intro {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
+      color: white;
+    }
 
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      animation: blink 0.8s infinite;
-    }
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      animation: blink 0.8s infinite;
+    }
 
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      50.01%, 100% { opacity: 0; }
-    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      50.01%, 100% { opacity: 0; }
+    }
 
-    #terminal {
-      position: absolute;
-      top: 45%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: left;
-      font-family: 'Courier New', monospace;
-      white-space: pre-wrap;
-      color: white;
-      background-color: black;
-      padding: 30px;
-      border: 1px solid white;
-      width: 500px;
-      display: none;
-    }
+    #terminal {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: left;
+      font-family: 'Courier New', monospace;
+      white-space: pre-wrap;
+      color: white;
+      background-color: black;
+      padding: 30px;
+      border: 1px solid white;
+      width: 500px;
+      display: none;
+    }
 
-    #video-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -1;
-      display: none;
-    }
+    #video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      display: none;
+    }
 
-    .profile-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: none;
-      animation: glow 1.5s infinite alternate;
-    }
+    .profile-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      animation: glow 1.5s infinite alternate;
+    }
 
-    @keyframes glow {
-      0% {
-        text-shadow: 0 0 10px white, 0 0 20px white;
-      }
-      100% {
-        text-shadow: 0 0 20px white, 0 0 40px white;
-      }
-    }
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 10px white, 0 0 20px white;
+      }
+      100% {
+        text-shadow: 0 0 20px white, 0 0 40px white;
+      }
+    }
 
-    .profile-grid {
-      background: rgba(0, 0, 0, 0.6);
-      border: 2px solid white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px white;
-    }
+    .profile-grid {
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px white;
+    }
 
-    img.pfp {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      border: 2px solid white;
-      object-fit: cover;
-      margin-bottom: 20px;
-    }
+    img.pfp {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 2px solid white;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
 
-    h1 {
-      font-size: 28px;
-      margin: 10px 0;
-    }
+    h1 {
+      font-size: 28px;
+      margin: 10px 0;
+    }
 
-    hr {
-      border: 0;
-      border-top: 1px solid #888;
-      margin: 20px auto;
-      width: 60%;
-    }
+    hr {
+      border: 0;
+      border-top: 1px solid #888;
+      margin: 20px auto;
+      width: 60%;
+    }
 
-    .socials {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .socials {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-    .social-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 10px 15px;
-      border-radius: 8px;
-      text-decoration: none;
-      color: white;
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-    }
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
 
-    .social-link:hover {
-      background: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 0 10px white;
-    }
+    .social-link:hover {
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 10px white;
+    }
 
-    .social-link img.icon {
-      width: 24px;
-      height: 24px;
-    }
-
-    .ethereum-logo {
-      width: 50px;
-      height: 50px;
-      margin-top: 10px;
-    }
-
-    .ethereum-address {
-      font-size: 14px;
-      color: white;
-      margin-top: 10px;
-      word-wrap: break-word;
-    }
-  </style>
+    .social-link img.icon {
+      width: 24px;
+      height: 24px;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Background video -->
-  <video id="video-bg" autoplay muted loop playsinline>
-    <source src="https://files.catbox.moe/pfarh1.mp4" type="video/mp4">
-  </video>
+  <!-- Background video -->
+  <video id="video-bg" autoplay muted loop playsinline>
+    <source src="https://files.catbox.moe/pfarh1.mp4" type="video/mp4">
+  </video>
 
-  <!-- Intro screen -->
-  <div id="intro">
-    Welcome To Sec's Domain. Press Any Key To Continue<span class="cursor">█</span>
-  </div>
+  <!-- Intro screen -->
+  <div id="intro">
+    Welcome To Sec's Domain. Press Any Key To Continue<span class="cursor">█</span>
+  </div>
 
-  <div id="terminal"></div>
+  <div id="terminal"></div>
 
-  <!-- Profile -->
-  <div class="profile-container" id="profile">
-    <div class="profile-grid">
-      <img class="pfp" src="https://files.catbox.moe/g98ac1.jpg" alt="pfp" />
-      <h1>Sec™</h1>
-      <p>Greatest Of All Time</p>
-      <hr />
-      <div class="socials">
-        <a href="https://t.me/nondoxable" target="_blank" class="social-link">
-          <img src="https://files.catbox.moe/ym0rei.png" class="icon" alt="Telegram"> @sec
-        </a>
-        <a href="https://discord.gg/Swf6DK9d" target="_blank" class="social-link">
-          <img src="https://files.catbox.moe/kru8yj.png" class="icon" alt=""> @tlosec
-        </a>
-        <a href="0x75a4DD174D21c605f861dedF561383d42a574F43" class=>
-          <img src="https://files.catbox.moe/a0ueia.png" class="icon" alt=""> 0x75a4DD174D21c605f861dedF561383d42a574F43
-        </a>
-      </div>
-    </div>
-    <audio id="profile-audio" autoplay loop>
-      <source src="https://jmp.sh/s/Q31QvTX6hhNpU3fsdx6k" type="audio/mpeg">
-    </audio>
-  </div>
+  <!-- Profile -->
+  <div class="profile-container" id="profile">
+    <div class="profile-grid">
+      <img class="pfp" src="https://files.catbox.moe/g98ac1.jpg" alt="pfp" />
+      <h1>Sec™</h1>
+      <p>Greatest Of All Time</p>
+      <hr />
+      <div class="socials">
+        <a href="https://t.me/nondoxable" target="_blank" class="social-link">
+          <img src="https://files.catbox.moe/ym0rei.png" class="icon" alt="Telegram"> @sec
+        </a>
+        <a href="https://discord.gg/Swf6DK9d" target="_blank" class="social-link">
+          <img src="https://files.catbox.moe/kru8yj.png" class="icon" alt=""> @tlosec
+        </a>
+      </div>
+    </div>
+    <audio id="profile-audio" autoplay loop>
+      <source src="https://jmp.sh/s/Q31QvTX6hhNpU3fsdx6k" type="audio/mpeg">
+    </audio>
+  </div>
 
-  <script>
-    const lines = [
-      "root@adduser.shw",
-      "Please state the user you would like to add --> sec",
-      "Please set the password for 'sec' --> ********",
-      "Shall we create a home directory for 'sec'? --> Yes",
-      "Directory Created, time for your socials!",
-      "",
-      "Logging in...",
-      "Login successful.",
-    ];
+  <script>
+    const lines = [
+      "root@adduser.shw",
+      "Please state the user you would like to add --> sec",
+      "Please set the password for 'sec' --> ********",
+      "Shall we create a home directory for 'sec'? --> Yes",
+      "Directory Created, time for your socials!",
+      "",
+      "Logging in...",
+      "Login successful.",
+    ];
 
-    let i = 0, j = 0;
-    const speed = 25;
-    const terminal = document.getElementById("terminal");
-    const profile = document.getElementById("profile");
-    const profileAudio = document.getElementById("profile-audio");
-    const videoBg = document.getElementById("video-bg");
+    let i = 0, j = 0;
+    const speed = 25;
+    const terminal = document.getElementById("terminal");
+    const profile = document.getElementById("profile");
+    const profileAudio = document.getElementById("profile-audio");
+    const videoBg = document.getElementById("video-bg");
 
-    function typeLine() {
-      if (i < lines.length) {
-        if (j < lines[i].length) {
-          terminal.innerHTML += lines[i].charAt(j);
-          j++;
-          setTimeout(typeLine, speed);
-        } else {
-          terminal.innerHTML += '\n';
-          i++;
-          j = 0;
-          setTimeout(typeLine, 250);
-        }
-      } else {
-        setTimeout(() => {
-          terminal.style.display = "none";
-          profile.style.display = "flex";
-          videoBg.style.display = "block";
-          profileAudio.play().catch(e => console.log("Autoplay blocked"));
-        }, 1000);
-      }
-    }
+    function typeLine() {
+      if (i < lines.length) {
+        if (j < lines[i].length) {
+          terminal.innerHTML += lines[i].charAt(j);
+          j++;
+          setTimeout(typeLine, speed);
+        } else {
+          terminal.innerHTML += '\n';
+          i++;
+          j = 0;
+          setTimeout(typeLine, 250);
+        }
+      } else {
+        setTimeout(() => {
+          terminal.style.display = "none";
+          profile.style.display = "flex";
+          videoBg.style.display = "block";
+          profileAudio.play().catch(e => console.log("Autoplay blocked"));
+        }, 1000);
+      }
+    }
 
-    function startOnInput() {
-      document.getElementById("intro").remove();
-      terminal.style.display = "block";
-      typeLine();
-      document.removeEventListener("keydown", startOnInput);
-      document.removeEventListener("click", startOnInput);
-    }
+    function startOnInput() {
+      document.getElementById("intro").remove();
+      terminal.style.display = "block";
+      typeLine();
+      document.removeEventListener("keydown", startOnInput);
+      document.removeEventListener("click", startOnInput);
+    }
 
-    document.addEventListener("keydown", startOnInput);
-    document.addEventListener("click", startOnInput);
-  </script>
+    document.addEventListener("keydown", startOnInput);
+    document.addEventListener("click", startOnInput);
+  </script>
 
 </body>
 </html>
