@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Quit <3</title>
+  <title>Quit <3</title>
   <style>
     body {
       background-color: black;
@@ -95,6 +95,25 @@
       font-size: 18px;
     }
 
+    /* Start song button */
+    .start-button {
+      background-color: #333;
+      color: white;
+      font-size: 20px;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 20px;
+      cursor: pointer;
+      box-shadow: 0 0 10px white;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .start-button:hover {
+      background-color: #555;
+      box-shadow: 0 0 20px white;
+    }
+
     /* Hide the audio player controls */
     audio {
       display: none;
@@ -102,12 +121,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Background Audio that plays automatically and loops -->
-  <audio autoplay loop>
-    <source src="https://files.catbox.moe/uk12wr.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
 
   <!-- Profile container -->
   <div class="profile-container" id="profile">
@@ -123,8 +136,24 @@
           <span>@ydf271</span>
         </a>
       </div>
+      <!-- Button to start the song -->
+      <button class="start-button" id="startButton">Start Song</button>
     </div>
   </div>
+
+  <!-- Background Audio that does not play automatically -->
+  <audio id="backgroundAudio">
+    <source src="https://files.catbox.moe/uk12wr.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // Event listener for the button to start the song
+    document.getElementById("startButton").addEventListener("click", function() {
+      const audio = document.getElementById("backgroundAudio");
+      audio.play(); // Starts the audio when button is clicked
+    });
+  </script>
 
 </body>
 </html>
