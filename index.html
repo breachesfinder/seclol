@@ -1,66 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sec's Domain</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sec Quit <3</title>
   <style>
     body {
+      background-color: black;
+      color: white;
+      text-align: center;
       margin: 0;
       padding: 0;
-      background: black;
-      color: white;
       font-family: 'Arial Black', sans-serif;
-      font-size: 16px;
-      overflow: hidden;
-      text-align: center;
-    }
-
-    #intro {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 22px;
-      color: white;
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      animation: blink 0.8s infinite;
-    }
-
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      50.01%, 100% { opacity: 0; }
-    }
-
-    #terminal {
-      position: absolute;
-      top: 45%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: left;
-      font-family: 'Courier New', monospace;
-      white-space: pre-wrap;
-      color: white;
-      background-color: black;
-      padding: 30px;
-      border: 1px solid white;
-      width: 500px;
-      display: none;
-    }
-
-    #video-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -1;
-      display: none;
     }
 
     .profile-container {
@@ -68,7 +19,11 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      display: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
       animation: glow 1.5s infinite alternate;
     }
 
@@ -138,93 +93,30 @@
       width: 24px;
       height: 24px;
     }
+
   </style>
 </head>
 <body>
 
-  <!-- Background video -->
-  <video id="video-bg" autoplay muted loop playsinline>
-    <source src="https://files.catbox.moe/pfarh1.mp4" type="video/mp4">
-  </video>
+  <!-- Background Music (Audio) -->
+  <audio autoplay loop>
+    <source src="https://files.catbox.moe/arw217.mp3" type="audio/mpeg">
+  </audio>
 
-  <!-- Intro screen -->
-  <div id="intro">
-    Welcome To Sec's Domain. Press Any Key To Continue<span class="cursor">█</span>
-  </div>
-
-  <div id="terminal"></div>
-
-  <!-- Profile -->
+  <!-- Profile container -->
   <div class="profile-container" id="profile">
     <div class="profile-grid">
       <img class="pfp" src="https://files.catbox.moe/zalo0a.png" alt="pfp" />
       <h1>Sec™</h1>
-      <p>Quit Com
+      <p>Quit Com</p>
       <hr />
       <div class="socials">
         <a href="https://t.me/ydf271" target="_blank" class="social-link">
           <img src="https://files.catbox.moe/ym0rei.png" class="icon" alt="Telegram"> @sec
         </a>
-        </a>
       </div>
     </div>
-    <audio id="profile-audio" loop>
-      <source src="https://files.catbox.moe/arw217.mp3" type="audio/mpeg">
-    </audio>
   </div>
-
-  <script>
-    const lines = [
-      "root@adduser.shw",
-      "Please state the user you would like to add --> sec",
-      "Please set the password for 'sec' --> ********",
-      "Shall we create a home directory for 'sec'? --> Yes",
-      "Directory Created, time for your socials!",
-      "",
-      "Logging in...",
-      "Login successful.",
-    ];
-
-    let i = 0, j = 0;
-    const speed = 25;
-    const terminal = document.getElementById("terminal");
-    const profile = document.getElementById("profile");
-    const profileAudio = document.getElementById("profile-audio");
-    const videoBg = document.getElementById("video-bg");
-
-    function typeLine() {
-      if (i < lines.length) {
-        if (j < lines[i].length) {
-          terminal.innerHTML += lines[i].charAt(j);
-          j++;
-          setTimeout(typeLine, speed);
-        } else {
-          terminal.innerHTML += '\n';
-          i++;
-          j = 0;
-          setTimeout(typeLine, 250);
-        }
-      } else {
-        setTimeout(() => {
-          terminal.style.display = "none";
-          profile.style.display = "flex";
-          videoBg.style.display = "block";
-          profileAudio.play().catch(err => console.log("Autoplay blocked:", err)); // Ensures the music plays
-        }, 1000);
-      }
-    }
-
-    function startOnInput() {
-      document.getElementById("intro").remove();
-      terminal.style.display = "block";
-      typeLine();
-      document.removeEventListener("keydown", startOnInput);
-      document.removeEventListener("click", startOnInput);
-    }
-
-    document.addEventListener("keydown", startOnInput);
-    document.addEventListener("click", startOnInput);
-  </script>
 
 </body>
 </html>
