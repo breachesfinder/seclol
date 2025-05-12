@@ -103,7 +103,7 @@
 </head>
 <body>
 
-  <!-- Background Music (Audio) that plays automatically, without controls -->
+  <!-- Background Audio that plays automatically and loops -->
   <audio autoplay loop>
     <source src="https://files.catbox.moe/uk12wr.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
@@ -119,20 +119,12 @@
       <!-- Telegram Link -->
       <div class="social-link">
         <a href="https://t.me/ydf271" target="_blank">
-          <img src="https://files.catbox.moe/ym0rei.png" class="icon" alt="Telegram">
+          <img src="https://files.catbox.moe/ym0rei.png" class="icon" alt="Telegram"> 
           <span>@ydf271</span>
         </a>
       </div>
     </div>
   </div>
-
-  <script>
-    // Force audio to play even if the page is loaded in a way that restricts autoplay
-    var audio = document.querySelector('audio');
-    audio.play().catch(function(error) {
-      console.error("Audio autoplay failed:", error);
-    });
-  </script>
 
 </body>
 </html>
