@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>quit <3</title>
+  <title>end <3</title>
   <style>
     body {
       background-color: black;
@@ -65,10 +65,12 @@
       width: 60%;
     }
 
+    /* Fix Telegram link */
     .social-link {
       margin-top: 20px;
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 10px;
       background: rgba(255, 255, 255, 0.05);
       padding: 10px 15px;
@@ -88,6 +90,11 @@
       height: 24px;
     }
 
+    .social-link span {
+      color: white; /* Ensure text is white */
+      font-size: 18px;
+    }
+
     /* Hide the audio player controls */
     audio {
       display: none;
@@ -99,7 +106,7 @@
   <!-- Background Music (Audio) that plays automatically, without controls -->
   <audio autoplay loop>
     <source src="https://files.catbox.moe/uk12wr.mp3" type="audio/mpeg">
-
+    Your browser does not support the audio element.
   </audio>
 
   <!-- Profile container -->
@@ -112,7 +119,8 @@
       <!-- Telegram Link -->
       <div class="social-link">
         <a href="https://t.me/ydf271" target="_blank">
-          <img src="https://files.catbox.moe/ym0rei.png" class="icon" alt="Telegram"> @ydf271
+          <img src="https://files.catbox.moe/ym0rei.png" class="icon" alt="Telegram"> 
+          <span>@ydf271</span>
         </a>
       </div>
     </div>
