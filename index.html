@@ -2,158 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Quit <3</title>
   <style>
+    @font-face {
+      font-family: 'Minecraftia';
+      src: url('https://files.catbox.moe/95r2wo.ttf') format('truetype');
+    }
+
     body {
-      background-color: black;
-      color: white;
-      text-align: center;
       margin: 0;
       padding: 0;
-      font-family: 'Arial Black', sans-serif;
-    }
-
-    .profile-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      background-color: black;
+      color: white;
+      font-family: 'Minecraftia', monospace;
       text-align: center;
-      animation: glow 1.5s infinite alternate;
     }
 
-    @keyframes glow {
-      0% {
-        text-shadow: 0 0 10px white, 0 0 20px white;
-      }
-      100% {
-        text-shadow: 0 0 20px white, 0 0 40px white;
-      }
+    .container {
+      margin-top: 80px;
     }
 
-    .profile-grid {
-      background: rgba(0, 0, 0, 0.6);
-      border: 2px solid white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px white;
-    }
-
-    img.pfp {
-      width: 160px;
-      height: 160px;
+    .pfp {
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
-      border: 2px solid white;
+      border: 3px solid white;
       object-fit: cover;
       margin-bottom: 20px;
     }
 
-    h1 {
-      font-size: 28px;
-      margin: 10px 0;
-    }
-
-    hr {
-      border: 0;
-      border-top: 1px solid #888;
-      margin: 20px auto;
-      width: 60%;
-    }
-
-    /* Fix Telegram link */
-    .social-link {
-      margin-top: 20px;
+    .username {
+      font-size: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 10px;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 10px 15px;
-      border-radius: 8px;
-      text-decoration: none;
-      color: white;
-      transition: background 0.3s ease, box-shadow 0.3s ease;
+      gap: 8px;
     }
 
-    .social-link:hover {
-      background: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 0 10px white;
+    .username img {
+      width: 20px;
+      height: 20px;
     }
 
-    .social-link img.icon {
-      width: 24px;
-      height: 24px;
+    .glow {
+      text-shadow: 0 0 5px white, 0 0 10px white;
     }
 
-    .social-link span {
-      color: white; /* Ensure text is white */
-      font-size: 18px;
+    #audio-control {
+      margin-top: 30px;
     }
 
-    /* Start song button */
-    .start-button {
-      background-color: #333;
-      color: white;
-      font-size: 20px;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 10px;
-      margin-top: 20px;
-      cursor: pointer;
-      box-shadow: 0 0 10px white;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .start-button:hover {
-      background-color: #555;
-      box-shadow: 0 0 20px white;
-    }
-
-    /* Hide the audio player controls */
     audio {
-      display: none;
+      width: 300px;
+      outline: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- Profile container -->
-  <div class="profile-container" id="profile">
-    <div class="profile-grid">
-      <img class="pfp" src="https://files.catbox.moe/mdymhs.jpg" alt="pfp" />
-      <h1>Sec</h1>
-      <p><3</p>
-      <hr />
-      <!-- Telegram Link -->
-      <div class="social-link">
-        <a href="https://t.me/ydf271" target="_blank">
-          <img src="https://files.catbox.moe/ym0rei.png" class="icon" alt="Telegram"> 
-          <span>@ydf271</span>
-        </a>
-      </div>
-      <!-- Button to start the song -->
-      <button class="start-button" id="startButton">Press For Music</button>
+  <div class="container">
+    <img src="https://files.catbox.moe/mdymhs.jpg" alt="pfp" class="pfp">
+    <div class="username glow">
+      <img src="https://files.catbox.moe/ym0rei.png" alt="Telegram">
+      @ydf271
+    </div>
+
+    <div id="audio-control">
+      <audio controls autoplay loop>
+        <source src="https://files.catbox.moe/uk12wr.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
     </div>
   </div>
-
-  <!-- Background Audio that does not play automatically -->
-  <audio id="backgroundAudio">
-    <source src="https://files.catbox.moe/uk12wr.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <script>
-    // Event listener for the button to start the song
-    document.getElementById("startButton").addEventListener("click", function() {
-      const audio = document.getElementById("backgroundAudio");
-      audio.play(); // Starts the audio when button is clicked
-    });
-  </script>
 
 </body>
 </html>
