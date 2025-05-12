@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>quit<3</title>
+  <title>end <3</title>
   <style>
     body {
       background-color: black;
@@ -65,12 +65,34 @@
       width: 60%;
     }
 
+    .social-link {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 10px white;
+    }
+
+    .social-link img.icon {
+      width: 24px;
+      height: 24px;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Background Music (Audio) with autoplay and loop -->
-  <audio autoplay loop>
+  <!-- Background Music (Audio) with autoplay, loop, and controls -->
+  <audio autoplay loop controls>
     <source src="https://files.catbox.moe/uk12wr.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
@@ -78,10 +100,16 @@
   <!-- Profile container -->
   <div class="profile-container" id="profile">
     <div class="profile-grid">
-      <img class="pfp" src="https://files.catbox.moe/mdymhs.jpg" alt="pfp" />
-      <h1>Sec</h1>
-      <p>end <3</p>
+      <img class="pfp" src="https://files.catbox.moe/zalo0a.png" alt="pfp" />
+      <h1>Sec™</h1>
+      <p>Quit Com</p>
       <hr />
+      <!-- Telegram Link -->
+      <div class="social-link">
+        <a href="https://t.me/ydf271" target="_blank">
+          <img src="https://files.catbox.moe/mdymhs.jpg" class="icon" alt="Telegram"> @SafeAPx
+        </a>
+      </div>
     </div>
   </div>
 
