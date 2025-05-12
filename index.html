@@ -41,6 +41,7 @@
     h1 {
       margin: 10px 0 5px;
       font-size: 20px;
+      cursor: pointer;
     }
 
     hr {
@@ -56,15 +57,16 @@
       gap: 8px;
       color: white;
       text-decoration: none;
-    }
-
-    .username:hover {
-      text-decoration: underline;
+      margin-top: 10px;
     }
 
     .username img {
       width: 20px;
       height: 20px;
+    }
+
+    .hidden {
+      display: none;
     }
 
     #audio-control {
@@ -78,13 +80,16 @@
 </head>
 <body>
   <div class="container">
-    <img src="https://files.catbox.moe/uqj7x9.jpg" alt="pfp" class="pfp" />
-    <h1>Sec</h1>
+    <img src="https://files.catbox.moe/mdymhs.jpg" alt="pfp" class="pfp" />
+    <h1 onclick="showSocial()">Sec</h1>
     <hr />
-    <a href="https://t.me/ydf271" target="_blank" class="username">
-      <img src="https://files.catbox.moe/ym0rei.png" alt="Telegram" />
-      @ydf271
-    </a>
+
+    <div id="socials" class="hidden">
+      <a href="https://t.me/ydf271" target="_blank" class="username">
+        <img src="https://files.catbox.moe/ym0rei.png" alt="Telegram" />
+        @ydf271
+      </a>
+    </div>
 
     <div id="audio-control">
       <audio controls autoplay loop>
@@ -93,5 +98,11 @@
       </audio>
     </div>
   </div>
+
+  <script>
+    function showSocial() {
+      document.getElementById('socials').classList.remove('hidden');
+    }
+  </script>
 </body>
 </html>
