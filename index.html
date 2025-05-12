@@ -81,7 +81,7 @@
 <body>
   <div class="container">
     <img src="https://files.catbox.moe/mdymhs.jpg" alt="pfp" class="pfp" />
-    <h1 onclick="showSocial()">Sec</h1>
+    <h1 onclick="toggleSocial()">Sec</h1>
     <hr />
 
     <div id="socials" class="hidden">
@@ -94,14 +94,15 @@
     <div id="audio-control">
       <audio controls autoplay loop>
         <source src="https://files.catbox.moe/uk12wr.mp3" type="audio/mpeg" />
-        
+        Your browser does not support the audio element.
       </audio>
     </div>
   </div>
 
   <script>
-    function showSocial() {
-      document.getElementById('socials').classList.remove('hidden');
+    function toggleSocial() {
+      const socials = document.getElementById('socials');
+      socials.classList.toggle('hidden');
     }
   </script>
 </body>
