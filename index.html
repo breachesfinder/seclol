@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quit <3</title>
   <style>
     @font-face {
@@ -16,11 +16,17 @@
       background-color: black;
       color: white;
       font-family: 'Minecraftia', monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
       text-align: center;
     }
 
     .container {
-      margin-top: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .pfp {
@@ -32,12 +38,25 @@
       margin-bottom: 20px;
     }
 
-    .username {
+    h1 {
+      margin: 10px 0 5px;
       font-size: 20px;
+      text-shadow: 0 0 5px white, 0 0 10px white;
+    }
+
+    hr {
+      width: 100px;
+      border: 1px solid white;
+      margin: 10px 0;
+    }
+
+    .username {
+      font-size: 18px;
       display: flex;
-      justify-content: center;
       align-items: center;
       gap: 8px;
+      color: white;
+      text-shadow: 0 0 5px white, 0 0 10px white;
     }
 
     .username img {
@@ -45,36 +64,31 @@
       height: 20px;
     }
 
-    .glow {
-      text-shadow: 0 0 5px white, 0 0 10px white;
-    }
-
     #audio-control {
-      margin-top: 30px;
+      margin-top: 25px;
     }
 
     audio {
-      width: 300px;
-      outline: none;
+      width: 250px;
     }
   </style>
 </head>
 <body>
-
   <div class="container">
-    <img src="https://files.catbox.moe/mdymhs.jpg" alt="pfp" class="pfp">
-    <div class="username glow">
-      <img src="https://files.catbox.moe/ym0rei.png" alt="Telegram">
+    <img src="https://files.catbox.moe/mdymhs.jpg" alt="pfp" class="pfp" />
+    <h1>Sec</h1>
+    <hr />
+    <div class="username">
+      <img src="https://files.catbox.moe/ym0rei.png" alt="Telegram" />
       @ydf271
     </div>
 
     <div id="audio-control">
       <audio controls autoplay loop>
-        <source src="https://files.catbox.moe/uk12wr.mp3" type="audio/mpeg">
+        <source src="https://files.catbox.moe/uk12wr.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
     </div>
   </div>
-
 </body>
 </html>
