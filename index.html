@@ -126,5 +126,13 @@
     </div>
   </div>
 
+  <script>
+    // Force audio to play even if the page is loaded in a way that restricts autoplay
+    var audio = document.querySelector('audio');
+    audio.play().catch(function(error) {
+      console.error("Audio autoplay failed:", error);
+    });
+  </script>
+
 </body>
 </html>
